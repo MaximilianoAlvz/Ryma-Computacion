@@ -3,6 +3,7 @@ import TabsMenu from "../tabs"
 import React from "react";
 import { pedirProductos } from "../../listas/productos";
 import ListadoItems from "./listado-items/listado-items";
+import { Box, CircularProgress, Container, Typography } from "@mui/material";
 
 const categorias = [
     { id: "cel", titulo: "Celulares" },
@@ -11,7 +12,7 @@ const categorias = [
 ];
 
 const ContenedorProductos = () => {
-
+    const [loading, setLoading] = React.useState(false);
 
     const { categoria } = useParams();
 
@@ -35,6 +36,7 @@ const ContenedorProductos = () => {
     const [items, setItems] = React.useState([]);
 
     React.useEffect(() => {
+        setLoading(true);
         pedirProductos(buscarCategoria())
         .then(res => res.json())
         .then(res => {
@@ -45,6 +47,7 @@ const ContenedorProductos = () => {
                 price: elem.price,
             }))
             setItems(data);
+            setLoading(false);
         })
     }, [categoria])
 
@@ -58,7 +61,8 @@ const ContenedorProductos = () => {
         <div>
             <TabsMenu current={current} items={categorias} />
         <div>
-            <ListadoItems items={items}/>
+            {loading ? <Box sx= {{display: "flex", justifyContent: "center", alignContent:"center"}}><CircularProgress /> </Box> : <ListadoItems items={items}/> }
+            
         </div>
         </div>
     )
