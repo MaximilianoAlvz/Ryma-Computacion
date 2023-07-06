@@ -6,9 +6,9 @@ const DetalleItem = ({item}) => {
   return (
 
     <Container sx={{display:"flex", justifyContent:"center", alignItems:"center", height: "87vh"}}>
-        
+
         <img src={item.imagen} style={{height:"400px"}}></img>
-        <Box sx>
+        <Box>
         <Typography sx={{textTransform:"uppercase", fontWeight: "800"}}>{item.titulo}</Typography>
         <Typography>Precio: ${item.precio}</Typography>
         <Button>Agregar al carrito</Button>
