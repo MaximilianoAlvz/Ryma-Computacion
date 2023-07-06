@@ -61,7 +61,7 @@ const ContenedorProductos = () => {
         <div>
             <TabsMenu current={current} items={categorias} />
         <div>
-            {loading ? <Box sx= {{display: "flex", justifyContent: "center", alignContent:"center"}}><CircularProgress /> </Box> : <ListadoItems items={items}/> }
+            {loading ? <Container sx= {{display: "flex", justifyContent: "center", alignItems:"center", height:"60vh"}}><CircularProgress /> </Container> : <ListadoItems items={items}/> }
             
         </div>
         </div>
