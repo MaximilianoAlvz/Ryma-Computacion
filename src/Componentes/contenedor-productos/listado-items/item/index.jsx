@@ -5,8 +5,10 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Item =({data})=> {
+
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
@@ -24,7 +26,9 @@ const Item =({data})=> {
         </Typography>
       </CardContent>
       <CardActions>
+        <Link to = {`/producto/${data.id}`}>
         <Button size="small">Ver mas</Button>
+        </Link>
       </CardActions>
     </Card>
   );

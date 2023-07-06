@@ -11,7 +11,7 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import CarritoIcon from './carritoIcon';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 const Navbar = () => {
@@ -21,9 +21,24 @@ const Navbar = () => {
     setAnchorElNav(event.currentTarget);
   };
 
+  const navegar = useNavigate();
+
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
+
+  // const paginaDestino = ({pagina}) => {
+  //   switch ({pagina}) {
+  //     case "Inicio":
+  //      return navegar(("/"));
+  //     case "Productos":
+  //       return navegar(("/productos/cel"));
+  //     case "Contacto":
+  //         return navegar(("/"));
+  //     default: 
+  //       return navegar(("/"));
+  //   }
+  // }
 
 
   return (
@@ -78,22 +93,30 @@ const Navbar = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center" >{page}</Typography>
-                </MenuItem>
-              ))}
+
             </Menu>
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' },  }}>
-          <Button
-                key= "Inicio"
+              <Button
+                href='/'
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                <Link to {"/"} relative="path">
-                Inicio
-                </Link>
+              > 
+              Inicio
+              </Button>
+              <Button
+                href='/productos/cel'
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              > 
+            Productos
+              </Button>
+              <Button
+                href='/'
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              > 
+              contacto
               </Button>
           </Box>
           <Box>
