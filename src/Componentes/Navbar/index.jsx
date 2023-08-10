@@ -8,123 +8,115 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
-import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import CarritoIcon from './carritoIcon';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-
   const navegar = useNavigate();
-
-  const handleCloseNavMenu = () => {
+  const navegarInicio = () => {
+    navegar("/");
     setAnchorElNav(null);
-  };
+  }
+  const navegarProductos = () => {
+    navegar("/productos/cel/1");
+    setAnchorElNav(null);
+  }
+  const navegarContacto = () => {
+    navegar("/");
+    setAnchorElNav(null);}
 
-  // const paginaDestino = ({pagina}) => {
-  //   switch ({pagina}) {
-  //     case "Inicio":
-  //      return navegar(("/"));
-  //     case "Productos":
-  //       return navegar(("/productos/cel"));
-  //     case "Contacto":
-  //         return navegar(("/"));
-  //     default: 
-  //       return navegar(("/"));
-  //   }
-  // }
+    const handleOpenNavMenu = (event) => {
+      setAnchorElNav(event.currentTarget);
+    };
 
+    const handleCloseNavMenu = () => {
+      setAnchorElNav(null);
+    };
 
-  return (
-    <AppBar position="static">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            RYMA COMPUTACION
-          </Typography>
-
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'center',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'center',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
+    return (
+      <AppBar position="static">
+        <Container maxWidth="xl">
+          <Toolbar disableGutters>
+            <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+            <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              href="/"
               sx={{
-                display: { xs: 'block', md: 'none' },
+                mr: 2,
+                display: { xs: 'none', md: 'flex' },
+                fontFamily: 'monospace',
+                fontWeight: 700,
+                letterSpacing: '.3rem',
+                color: 'inherit',
+                textDecoration: 'none',
               }}
             >
+              RYMA COMPUTACION
+            </Typography>
 
-            </Menu>
-          </Box>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' },  }}>
+            <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleOpenNavMenu}
+                color="inherit"
+              >
+                <MenuIcon />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorElNav}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'center',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'center',
+                }}
+                open={Boolean(anchorElNav)}
+                onClose={handleCloseNavMenu}
+                sx={{
+                  display: { xs: 'block', md: 'none' },
+                }}
+              >
+
+              </Menu>
+            </Box>
+            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, }}>
               <Button
-                href='/'
-                onClick={handleCloseNavMenu}
+                onClick={navegarInicio}
                 sx={{ my: 2, color: 'white', display: 'block' }}
-              > 
-              Inicio
+              >
+                Inicio
               </Button>
               <Button
-                href='/productos/cel'
-                onClick={handleCloseNavMenu}
+                onClick={navegarProductos}
                 sx={{ my: 2, color: 'white', display: 'block' }}
-              > 
-            Productos
+              >
+                Productos
               </Button>
               <Button
-                href='/'
-                onClick={handleCloseNavMenu}
+                onClick={navegarContacto}
                 sx={{ my: 2, color: 'white', display: 'block' }}
-              > 
-              contacto
+              >
+                contacto
               </Button>
-          </Box>
-          <Box>
-            <CarritoIcon/>
-          </Box>        
-        </Toolbar>
-      </Container>
-    </AppBar>
-  );
-}
-export default Navbar;
+            </Box>
+            <Box>
+              <CarritoIcon/>
+            </Box>
+          </Toolbar>
+        </Container>
+      </AppBar>
+    );
+  }
+  export default Navbar;

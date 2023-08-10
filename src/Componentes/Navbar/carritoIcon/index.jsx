@@ -3,6 +3,10 @@ import Badge from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { CarritoGlobal } from '../../../context';
+import { useNavigate } from 'react-router-dom';
+
+
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   '& .MuiBadge-badge': {
@@ -12,11 +16,17 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
     padding: '0 4px',
   },
 }));
-const items = 7;
+
 const CarritoIcon = () => {
+  const navegar = useNavigate();
+
+const navegarCarrito = () => {
+  navegar("/carrito");}
+const {itemsCarrito} = React.useContext(CarritoGlobal);
+
   return (
-    <IconButton aria-label="cart">
-      <StyledBadge badgeContent={items} color="primary">
+    <IconButton aria-label="cart" onClick={navegarCarrito}>
+      <StyledBadge badgeContent={itemsCarrito} color="primary">
         <ShoppingCartIcon />
       </StyledBadge>
     </IconButton>

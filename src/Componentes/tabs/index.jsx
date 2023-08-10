@@ -9,7 +9,7 @@ const TabsMenu=({current, items})=> {
   const navegar = useNavigate();
 
   const handleChange = (_, newValue) => {
-    navegar ("/productos/" + newValue)
+    navegar ("/productos/" + newValue + "/" + 1)
   };
 
   return (
