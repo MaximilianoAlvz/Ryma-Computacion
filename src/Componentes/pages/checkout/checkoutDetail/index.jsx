@@ -6,10 +6,10 @@ import { CarritoGlobal } from '../../../../context';
 const CheckoutDetail = () => {
 
   const[nombreValido, setNombreValido] = React.useState();
-  const[apellidoValido, setApellidoValido] = React.useState(true);
-  const[mailValido, setMailValido] = React.useState(true);
-  const[numeroValido, setNumeroValido] = React.useState(true);
-  const[direccionValido, setDireccionValido] = React.useState(true);
+  const[apellidoValido, setApellidoValido] = React.useState();
+  const[mailValido, setMailValido] = React.useState();
+  const[numeroValido, setNumeroValido] = React.useState();
+  const[direccionValido, setDireccionValido] = React.useState();
   const {nombre, apellido, mail, direccion, numero} = React.useContext(CarritoGlobal);
 
   const validacionNombre = (nombre) => {

@@ -32,13 +32,13 @@ const FormularioCheckout = (props) => {
         <label style={{fontWeight:700}}>Nombre:</label>
         <input type='text' style={{height:"4vh", border: `1px solid ${nombreValido !== false ? "black" : "red"}`}} onBlur={nombreInput}></input>
         <label style={{fontWeight:700}}>Apellido:</label>
-        <input type='text' style={{height:"4vh", border: `1px solid ${apellidoValido ? "black" : "red"}`}} onBlur={apellidoInput}></input>
+        <input type='text' style={{height:"4vh", border: `1px solid ${apellidoValido !== false? "black" : "red"}`}} onBlur={apellidoInput}></input>
         <label style={{fontWeight:700}}>Email:</label>
-        <input type="email" style={{height:"4vh", border: `1px solid ${mailValido ? "black" : "red"}`}} onBlur={mailInput}></input>
+        <input type="email" style={{height:"4vh", border: `1px solid ${mailValido !== false ? "black" : "red"}`}} onBlur={mailInput}></input>
         <label style={{fontWeight:700}}>Telefono:</label>
-        <input type="tel" style={{height:"4vh", border: `1px solid ${numeroValido ? "black" : "red"}`}} onBlur={numeroInput}></input>
+        <input type="tel" style={{height:"4vh", border: `1px solid ${numeroValido !== false? "black" : "red"}`}} onBlur={numeroInput}></input>
         <label style={{fontWeight:700}}>Dirección:</label>
-        <input type="text" style={{height:"4vh", border: `1px solid ${direccionValido ? "black" : "red"}`}} onBlur={direccionInput}></input>
+        <input type="text" style={{height:"4vh", border: `1px solid ${direccionValido !== false ? "black" : "red"}`}} onBlur={direccionInput}></input>
     </form>
   )
 }

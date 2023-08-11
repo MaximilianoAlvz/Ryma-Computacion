@@ -3,12 +3,11 @@ import React from 'react'
 import CarritoCheckout from './carritoItems'
 import { CarritoGlobal } from '../../../../../context'
 import Swal from 'sweetalert2'
-import { useNavigate } from 'react-router-dom'
 
 const DetalleCompra = (props) => {
- const { setCarrito, numero, mail, direccion, nombre, apellido, nuevoPedido } = React.useContext(CarritoGlobal);
+ const { numero, mail, direccion, nombre, apellido, nuevoPedido, carrito, precioTotal } = React.useContext(CarritoGlobal);
  const {numeroValido, mailValido,nombreValido,apellidoValido, direccionValido, validaciones} = props 
- const navegar = useNavigate();
+
 
   const inputsValidos = () => {
     return numeroValido && mailValido && direccionValido && nombreValido && apellidoValido
@@ -17,23 +16,15 @@ const DetalleCompra = (props) => {
   const confirmarCompra = () => {
     if(inputsValidos()){
     nuevoPedido({
+      Comprador: {
       nombre: nombre,
       apellido: apellido,
       mail: mail,
       numero: numero,
-      direccion: direccion
+      direccion: direccion},
+      productos: carrito,
+      total: precioTotal
     });
-
-    Swal.fire({
-      title: "Su pedido fue realizado con exito",
-      icon: "success"
-    }).then((result)=>{
-      if (result.isConfirmed){
-        setCarrito([]);
-        navegar("/");
-      }
-    });
-
   }else {
     Swal.fire({
       title: "Complete correctamente los casilleros señalados",

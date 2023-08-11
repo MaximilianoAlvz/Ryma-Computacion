@@ -4,9 +4,7 @@ import { Container, Typography } from '@mui/material';
 import CartaItemCheckout from './cartaItem';
 
 const CarritoCheckout = () => {
-    const { carrito } = React.useContext(CarritoGlobal);
-
-    const [precioTotal, setPrecioTotal] = React.useState(0);
+    const { carrito, precioTotal, setPrecioTotal } = React.useContext(CarritoGlobal);
 
     const sumarPrecio = () => {
       let totalAcumulado = 0
